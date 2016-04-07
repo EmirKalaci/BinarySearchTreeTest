@@ -34,9 +34,9 @@ void BinarySearchTreeCreate(struct Node **currentNode, int newNodeValue)
 			(*currentNode)->leftNode->value = newNodeValue;
 		}
 		else
-        {
+		{
 			BinarySearchTreeCreate(&((*currentNode)->leftNode),newNodeValue);
-        }
+		}
 
 	}
 
