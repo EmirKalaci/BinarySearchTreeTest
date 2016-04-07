@@ -1,6 +1,5 @@
 #include "BinarySearchTree.h"
 
-bool isHeadNull=true;
 int counter_data = 0;
 
 /*
@@ -13,13 +12,12 @@ int counter_data = 0;
 void BinarySearchTreeCreate(struct Node **currentNode, int newNodeValue)
 {
 	/* If there is not any value in the tree, first node is created. */
-	if((*currentNode == NULL) && isHeadNull != false)
+	if((*currentNode == NULL))
 	{
 		(*currentNode) = (struct Node *)malloc(sizeof(struct Node));
 		(*currentNode)->value = newNodeValue;
 		(*currentNode)->leftNode = NULL;
 		(*currentNode)->rightNode = NULL;
-		isHeadNull = false;
 	}
 
 	/*
@@ -29,18 +27,18 @@ void BinarySearchTreeCreate(struct Node **currentNode, int newNodeValue)
 	 * child and new node value parameter to find correct position of new value.
 	 */
 	if (newNodeValue < (*currentNode)->value)
-    {
+	{
 		if ((*currentNode)->leftNode == NULL)
-        {
+		{
 			(*currentNode)->leftNode = (struct Node *)malloc(sizeof(struct Node));
 			(*currentNode)->leftNode->value = newNodeValue;
-        }
-        else
+		}
+		else
         {
-        	BinarySearchTreeCreate(&((*currentNode)->leftNode),newNodeValue);
+			BinarySearchTreeCreate(&((*currentNode)->leftNode),newNodeValue);
         }
 
-    }
+	}
 
 	/*
 	 * If new value is smaller than current node value and right child is null,
@@ -49,18 +47,18 @@ void BinarySearchTreeCreate(struct Node **currentNode, int newNodeValue)
 	 * child and new node value parameters to find correct position of new value.
 	 */
 	if (newNodeValue > (*currentNode)->value)
-    {
+	{
 		if ((*currentNode)->rightNode == NULL)
-	    {
+		{
 			(*currentNode)->rightNode = (struct Node *)malloc(sizeof(struct Node));
-            (*currentNode)->rightNode->value = newNodeValue;
-	    }
-        else
-        {
-        	BinarySearchTreeCreate((&(*currentNode)->rightNode), newNodeValue);
-        }
+			(*currentNode)->rightNode->value = newNodeValue;
+		}
+		else
+		{
+			BinarySearchTreeCreate((&(*currentNode)->rightNode), newNodeValue);
+		}
 
-    }
+	}
 
 }
 
@@ -74,30 +72,30 @@ void BinarySearchTreeCreate(struct Node **currentNode, int newNodeValue)
  */
 void BinaryTreeCreate(struct Node **currentNode, int newNodeValue)
 {
- 	int random = rand()%2;
+	int random = rand()%2;
 
- 	/* If there is not any value in the current node, this position
- 	 * is correct position to add node. A random value is created to
- 	 * decide position of new node.If random value is 0, position of
- 	 * current node is updated as left of the current node.If random
- 	 * value is 1, position of current node is updated as right of
- 	 * the current node.
- 	 */
+	/* If there is not any value in the current node, this position
+	 * is correct position to add node. A random value is created to
+	 * decide position of new node.If random value is 0, position of
+	 * current node is updated as left of the current node.If random
+	 * value is 1, position of current node is updated as right of
+	 * the current node.
+	 */
 	if(*currentNode == NULL)
- 	{
+	{
 		*currentNode = (struct Node *)malloc(sizeof(struct Node));
 		(*currentNode)->value = newNodeValue;
 		(*currentNode)->leftNode = NULL;
 		(*currentNode)->rightNode = NULL;
- 	}
+	}
 	else if(random == 0 && *currentNode != NULL)
- 	{
+	{
 		BinaryTreeCreate(&((*currentNode)->leftNode), newNodeValue);
- 	}
+	}
 	else if(random == 1 && *currentNode != NULL)
- 	{
+	{
 		BinaryTreeCreate(&((*currentNode)->rightNode), newNodeValue);
- 	}
+	}
 
  }
 
@@ -152,5 +150,6 @@ bool BinarySearchTreeTest(Node *currentNode, int min, int max)
 		return false;
 	}
 
-	return BinarySearchTreeTest(currentNode->leftNode, min, currentNode->value) && BinarySearchTreeTest(currentNode->rightNode, currentNode->value, max);
+	return BinarySearchTreeTest(currentNode->leftNode, min, currentNode->value) &&
+		   BinarySearchTreeTest(currentNode->rightNode, currentNode->value, max);
 }

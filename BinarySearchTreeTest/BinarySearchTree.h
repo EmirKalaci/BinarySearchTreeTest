@@ -4,10 +4,10 @@
 #define NULL ((void *)0)
 
 typedef struct Node
- {
- 	int value;
- 	struct Node *leftNode;
- 	struct Node *rightNode;
+{
+	int value;
+	struct Node *leftNode;
+	struct Node *rightNode;
 } Node;
 
 bool BinarySearchTreeTest(Node *,int ,int);
