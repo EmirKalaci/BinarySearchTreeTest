@@ -24,8 +24,8 @@ Node *root2;
 
 	 PrintNode(root);
 	 printf("\n%s\n", isBinarySearchTree ? "The tree is a binary search tree.\n" :
-			 	 	 	 	 	 	 	 	 "The tree is not a binary search tree.\n");
+			 	 	 	 	 	 	 	   "The tree is not a binary search tree.\n");
 	 PrintNode(root2);
 	 printf("\n%s\n", isBinarySearchTree2 ? "The tree is binary a search tree." :
-			 	 	 	 	 	 	 	 	 "The tree is not a binary search tree.");
+			 	 	 	 	 	 	 	    "The tree is not a binary search tree.");
  }

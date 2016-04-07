@@ -151,5 +151,5 @@ bool BinarySearchTreeTest(Node *currentNode, int min, int max)
 	}
 
 	return BinarySearchTreeTest(currentNode->leftNode, min, currentNode->value) &&
-			BinarySearchTreeTest(currentNode->rightNode, currentNode->value, max);
+		   BinarySearchTreeTest(currentNode->rightNode, currentNode->value, max);
 }
